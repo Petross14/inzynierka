@@ -87,34 +87,34 @@ public class Graph {
             result.add(subGraph);
         }
         
-        //Merging sets to obtain subgraphs in network which aren't connected to each other 
-        boolean merge = true;
-        int numberOfMerges;
-        while (merge) {
-            numberOfMerges = 0;
-            for(int i = 0; i < result.size() - 1; i++){
-                for(int j = i + 1; j < result.size(); j++){
-                    Set<Integer> subGraphCopy = new TreeSet<>(result.get(i));
-                    subGraphCopy.retainAll(result.get(j));
-                    if(!subGraphCopy.isEmpty()){
-                        result.get(i).addAll(result.get(j));
-                        result.remove(j);
-                        numberOfMerges++;
-                        j--;
-                    }
-                }
-            }
-            if(numberOfMerges == 0){
-                merge = false;
-            }
-        }
-        
-        //Rewrite sets to arraylist
-        for(int i = 0; i < result.size(); i++){
-            ArrayList<Integer> subGraph = new ArrayList<>();
-            subGraph.addAll(result.get(i));
-            resultArray.add(subGraph);
-        }
+	    //Merging sets to obtain subgraphs in network which aren't connected to each other 
+	    boolean merge = true;
+	    int numberOfMerges;
+	    while (merge) {
+	        numberOfMerges = 0;
+	        for(int i = 0; i < result.size() - 1; i++){
+	            for(int j = i + 1; j < result.size(); j++){
+	                Set<Integer> subGraphCopy = new TreeSet<>(result.get(i));
+	                subGraphCopy.retainAll(result.get(j));
+	                if(!subGraphCopy.isEmpty()){
+	                    result.get(i).addAll(result.get(j));
+	                    result.remove(j);
+	                    numberOfMerges++;
+	                    j--;
+	                }
+	            }
+	        }
+	        if(numberOfMerges == 0){
+	            merge = false;
+	        }
+	    }
+	    
+	    //Rewrite sets to arraylist
+	    for(int i = 0; i < result.size(); i++){
+	        ArrayList<Integer> subGraph = new ArrayList<>();
+	        subGraph.addAll(result.get(i));
+	        resultArray.add(subGraph);
+	    }
         
         return resultArray;
     }

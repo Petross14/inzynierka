@@ -12,7 +12,14 @@ import java.util.TreeMap;
 
 public class Detection {
     
-    public static double communityDetection(Graph network, int populationSize, int numberOfGeneration, double r, int elite, double crossoverRate, double mutationRate, int selection){
+    public static double communityDetection(Graph network, 
+    										int populationSize, 
+    										int numberOfGeneration, 
+    										double r, 
+    										int elite, 
+    										double crossoverRate, 
+    										double mutationRate, 
+    										int selection){
     	//Generate chromosomes for given population size
     	ArrayList<ArrayList<Integer>> population = null;
     	population = generateChromosomes(network, populationSize);
@@ -57,7 +64,8 @@ public class Detection {
         		selectedChrom = rankSelection(fitnessScores, elites.size());
         	}
         	
-    		//If random number is less or equal to crossover rate apply uniform crossover for selected chromosomes and create children
+    		//If random number is less or equal to crossover rate apply uniform crossover 
+        	//for selected chromosomes and create children
     		for(int j = 0; j < populationSize - elites.size() - 1; j+=2) {
     			Random rand = new Random();
     			if (rand.nextDouble() <= crossoverRate) {
